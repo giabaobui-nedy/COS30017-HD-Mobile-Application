@@ -1,4 +1,4 @@
-RoomWordsSample
+HD Planner Application - Room Set up by the RoomWordsSample in Android Codelab
 ================
 
 This repository contains the finished sample code for the
