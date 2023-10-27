@@ -1,0 +1,198 @@
+<!-- res/layout/task_detail.xml -->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#F9F5F6"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".TaskDetailActivity">
+
+    <!-- Task Name -->
+    <TextView
+        android:id="@+id/task_detail_name_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Task Name:"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/task_detail_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <EditText
+        android:id="@+id/task_detail_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/task_detail_name_label"
+        app:layout_constraintBottom_toTopOf="@id/task_detail_description_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <!-- Task Detail -->
+    <TextView
+        android:id="@+id/task_detail_description_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Task Detail:"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/task_detail_name"
+        app:layout_constraintBottom_toTopOf="@id/task_detail_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <EditText
+        android:id="@+id/task_detail_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/task_detail_description_label"
+        app:layout_constraintBottom_toTopOf="@id/task_detail_date_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <!-- Task Date -->
+    <TextView
+        android:id="@+id/task_detail_date_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Task Date:"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/task_detail_description"
+        app:layout_constraintBottom_toTopOf="@id/task_detail_date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <EditText
+        android:id="@+id/task_detail_date"
+        android:inputType="date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/task_detail_date_label"
+        app:layout_constraintBottom_toTopOf="@id/task_detail_time_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <!-- Task Time -->
+    <TextView
+        android:id="@+id/task_detail_time_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Task Time:"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/task_detail_date"
+        app:layout_constraintBottom_toTopOf="@id/task_detail_time"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <EditText
+        android:id="@+id/task_detail_time"
+        android:inputType="time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/task_detail_time_label"
+        app:layout_constraintBottom_toTopOf="@id/task_detail_duration_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <!-- Task Duration -->
+    <TextView
+        android:id="@+id/task_detail_duration_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Task Duration:"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/task_detail_time"
+        app:layout_constraintBottom_toTopOf="@id/task_detail_duration"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <EditText
+        android:id="@+id/task_detail_duration"
+        android:inputType="number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/task_detail_duration_label"
+        app:layout_constraintBottom_toTopOf="@id/task_detail_frequency_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <!-- Task Frequency -->
+    <TextView
+        android:id="@+id/task_detail_frequency_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Task Frequency:"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/task_detail_duration"
+        app:layout_constraintBottom_toTopOf="@id/task_detail_frequency"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <EditText
+        android:id="@+id/task_detail_frequency"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/task_detail_frequency_label"
+        app:layout_constraintBottom_toTopOf="@id/update_task"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <Button
+        android:id="@+id/redo_task"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Redo"
+        app:layout_constraintTop_toBottomOf="@id/task_detail_frequency"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/update_task"
+        />
+
+    <Button
+        android:id="@+id/update_task"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update"
+        app:layout_constraintTop_toBottomOf="@id/task_detail_frequency"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/redo_task"
+        app:layout_constraintEnd_toStartOf="@id/delete_task"
+        />
+
+    <Button
+        android:id="@+id/delete_task"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        app:layout_constraintTop_toBottomOf="@id/task_detail_frequency"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/update_task"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
