@@ -38,8 +38,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DairyActivity"
-            android:label="Your Dairy"
+            android:name=".DiaryActivity"
+            android:label="Your Diary"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

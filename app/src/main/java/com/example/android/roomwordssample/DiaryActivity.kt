@@ -9,7 +9,7 @@ import com.example.android.roomwordssample.viewmodels.TaskViewModel
 import com.example.android.roomwordssample.viewmodels.TaskViewModelFactory
 import java.util.Locale
 
-class DairyActivity : AppCompatActivity() {
+class DiaryActivity : AppCompatActivity() {
 
     private val taskViewModel: TaskViewModel by viewModels {
         TaskViewModelFactory((application as PlannerApplication).repository)
@@ -17,7 +17,7 @@ class DairyActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_dairy) // Assuming you have an XML layout file with a TextView with id 'diary'
+        setContentView(R.layout.activity_diary) // Assuming you have an XML layout file with a TextView with id 'diary'
 
         val dairyTextView: TextView = findViewById(R.id.diary)
 

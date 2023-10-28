@@ -33,7 +33,6 @@ import com.example.android.roomwordssample.listapdater.TaskListAdapter
 import com.example.android.roomwordssample.viewmodels.TaskViewModel
 import com.example.android.roomwordssample.viewmodels.TaskViewModelFactory
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import org.w3c.dom.Text
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
@@ -60,7 +59,7 @@ class MainActivity : AppCompatActivity() {
         // Handle item selection.
         return when (item.itemId) {
             R.id.diary -> {
-                val intent = Intent(this, DairyActivity()::class.java)
+                val intent = Intent(this, DiaryActivity()::class.java)
                 startActivity(intent)
                 true
             }
