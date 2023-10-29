@@ -10,7 +10,7 @@ class TaskRepository (private val taskDao: TaskDAO) {
     // Observed Flow will notify the observer when the data has changed.
     val allTasks: Flow<List<Task>> = taskDao.getAllTasks()
     val allTasksForToday: Flow<List<Task>> = taskDao.getTasksOfToday()
-    val allTasksForDairy: Flow<List<Task>> = taskDao.getTasksForDairy()
+    val allTasksForDiary: Flow<List<Task>> = taskDao.getTasksForDiary()
 
     // By default Room runs suspend queries off the main thread, therefore, we don't need to
     // implement anything else to ensure we're not doing long running database work

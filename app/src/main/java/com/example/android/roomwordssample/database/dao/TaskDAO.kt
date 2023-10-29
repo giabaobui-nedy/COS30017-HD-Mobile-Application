@@ -19,7 +19,7 @@ interface TaskDAO {
     fun getAllTasks(): Flow<List<Task>>
 
     @Query("SELECT * FROM task_table WHERE done = 1 ORDER BY date")
-    fun getTasksForDairy(): Flow<List<Task>>
+    fun getTasksForDiary(): Flow<List<Task>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addTask(task: Task)

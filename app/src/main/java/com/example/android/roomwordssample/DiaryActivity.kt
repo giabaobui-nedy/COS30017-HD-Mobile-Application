@@ -19,9 +19,9 @@ class DiaryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_diary) // Assuming you have an XML layout file with a TextView with id 'diary'
 
-        val dairyTextView: TextView = findViewById(R.id.diary)
+        val diaryTextView: TextView = findViewById(R.id.diary)
 
-        taskViewModel.allTasksForDairy.observe(this) { tasks ->
+        taskViewModel.allTasksForDiary.observe(this) { tasks ->
             if (tasks.isNotEmpty()) {
                 val contentBuilder = StringBuilder()
                 val inputDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
@@ -33,9 +33,9 @@ class DiaryActivity : AppCompatActivity() {
                     val taskDetail = "On $formattedDate, at ${task.time}, I ${task.name} for about ${task.duration} minutes."
                     contentBuilder.append(taskDetail).append("\n")
                 }
-                dairyTextView.text = contentBuilder.toString()
+                diaryTextView.text = contentBuilder.toString()
             } else {
-                dairyTextView.text = "No tasks available."
+                diaryTextView.text = "No diary entry."
             }
         }
     }

@@ -172,7 +172,7 @@ class TaskDetailActivity : AppCompatActivity(), ConfirmDeleteDialog.NoticeDialog
                         Toast.makeText(this, "Update failed!", Toast.LENGTH_SHORT).show()
                     }
                 } else {
-                    Toast.makeText(this, "Update failed due to invalid inputs", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Update failed due to invalid inputs!", Toast.LENGTH_SHORT).show()
                 }
             }
         }

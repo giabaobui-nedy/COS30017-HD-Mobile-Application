@@ -34,7 +34,7 @@ class TaskViewModel(private val repository: TaskRepository) : ViewModel() {
     }
 
     // All tasks for Dairy Activity
-    val allTasksForDairy: LiveData<List<Task>> = repository.allTasksForDairy.asLiveData()
+    val allTasksForDiary: LiveData<List<Task>> = repository.allTasksForDiary.asLiveData()
 
     /**
      * Launching a new coroutine to insert the data in a non-blocking way
