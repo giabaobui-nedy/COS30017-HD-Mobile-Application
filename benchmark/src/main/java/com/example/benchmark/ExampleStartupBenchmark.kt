@@ -59,9 +59,7 @@ class ExampleStartupBenchmark {
             val recyclerView = device.findObject(By.res(packageName, "recycler_view"))
             recyclerView.setGestureMargin(device.displayWidth / 10)
             repeat(2) { recyclerView.fling(Direction.DOWN) }
-            device.waitForIdle()
-            repeat(2) {recyclerView.fling(Direction.UP)}
-            device.waitForIdle()
+            repeat(2) { recyclerView.fling(Direction.UP) }
         }
     }
 
@@ -81,23 +79,33 @@ class ExampleStartupBenchmark {
             val addButton = device.findObject(By.res(packageName, "fab"))
             addButton?.let {
                 it.click()
-                device.pressBack()
+                if (!device.pressBack()) {
+                    device.pressBack()
+                }
             }
 
             // Click a Task
+            device.wait(Until.hasObject(By.res(packageName, "task_view")), 5000)
             val task = device.findObject(By.res(packageName, "task_view"))
             task?.let {
                 it.click()
                 // Press back
-                device.pressBack()
+                if (!device.pressBack()) {
+                    device.pressBack()
+                }
             }
+
             // Click the diary
             device.pressMenu()
+            device.wait(Until.hasObject(By.text("View diary entries")), 5000)
             val diary = device.findObject(By.text("View diary entries"))
             diary?.let {
                 it.click()
-                device.pressBack()
+                if (!device.pressBack()) {
+                    device.pressBack()
+                }
             }
+
             device.waitForIdle()
         }
     }
