@@ -1,13 +1,19 @@
 package com.example.benchmark
 
-import androidx.benchmark.macro.CompilationMode
+import android.widget.Button
+import androidx.benchmark.macro.FrameTimingMetric
 import androidx.benchmark.macro.StartupMode
 import androidx.benchmark.macro.StartupTimingMetric
 import androidx.benchmark.macro.junit4.MacrobenchmarkRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.uiautomator.By
+import androidx.test.uiautomator.Direction
+import androidx.test.uiautomator.UiSelector
+import androidx.test.uiautomator.Until
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+
 
 /**
  * This is an example startup benchmark.
@@ -21,6 +27,7 @@ import org.junit.runner.RunWith
  * Run this benchmark from Studio to see startup measurements, and captured system traces
  * for investigating your app's performance.
  */
+
 @RunWith(AndroidJUnit4::class)
 class ExampleStartupBenchmark {
     @get:Rule
@@ -35,5 +42,63 @@ class ExampleStartupBenchmark {
     ) {
         pressHome()
         startActivityAndWait()
+    }
+
+    @Test
+    fun scroll() {
+        benchmarkRule.measureRepeated(
+            packageName = "com.example.android.roomwordssample",
+            iterations = 5,
+            metrics = listOf(FrameTimingMetric()),
+            startupMode = StartupMode.COLD,
+            setupBlock = {
+                pressHome()
+                startActivityAndWait()
+            }
+        ) {
+            val recyclerView = device.findObject(By.res(packageName, "recycler_view"))
+            recyclerView.setGestureMargin(device.displayWidth / 10)
+            repeat(2) { recyclerView.fling(Direction.DOWN) }
+            device.waitForIdle()
+            repeat(2) {recyclerView.fling(Direction.UP)}
+            device.waitForIdle()
+        }
+    }
+
+    @Test
+    fun navigate() {
+        benchmarkRule.measureRepeated(
+            packageName = "com.example.android.roomwordssample",
+            iterations = 5,
+            metrics = listOf(FrameTimingMetric()),
+            startupMode = StartupMode.COLD,
+            setupBlock = {
+                pressHome()
+                startActivityAndWait()
+            }
+        ) {
+            // Click the Add Task Button
+            val addButton = device.findObject(By.res(packageName, "fab"))
+            addButton?.let {
+                it.click()
+                device.pressBack()
+            }
+
+            // Click a Task
+            val task = device.findObject(By.res(packageName, "task_view"))
+            task?.let {
+                it.click()
+                // Press back
+                device.pressBack()
+            }
+            // Click the diary
+            device.pressMenu()
+            val diary = device.findObject(By.text("View diary entries"))
+            diary?.let {
+                it.click()
+                device.pressBack()
+            }
+            device.waitForIdle()
+        }
     }
 }
