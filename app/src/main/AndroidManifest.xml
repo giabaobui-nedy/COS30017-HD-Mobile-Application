@@ -3,6 +3,7 @@
     package="com.example.android.roomwordssample">
 
     <application
+        android:requestLegacyExternalStorage="true"
         android:name=".PlannerApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
