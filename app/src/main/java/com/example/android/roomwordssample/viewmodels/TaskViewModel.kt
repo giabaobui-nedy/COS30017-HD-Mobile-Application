@@ -2,10 +2,10 @@ package com.example.android.roomwordssample.viewmodels
 
 import android.icu.text.SimpleDateFormat
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
+import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.example.android.roomwordssample.database.entity.Task
 import com.example.android.roomwordssample.repository.TaskRepository
@@ -28,7 +28,7 @@ class TaskViewModel(private val repository: TaskRepository) : ViewModel() {
     // val allTasks: LiveData<List<Task>> = repository.allTasks.asLiveData()
     private val allTasksForToday: LiveData<List<Task>> = repository.allTasksForToday.asLiveData()
     // LiveData for sorted tasks
-    val sortedTasks: LiveData<List<Task>> = Transformations.map(allTasksForToday) { tasks ->
+    val sortedTasks: LiveData<List<Task>> = allTasksForToday.map { tasks ->
         // Use the helper function to sort tasks by time
         tasks.sortedBy { parseTimeToComparableFormat(it.time) }
     }

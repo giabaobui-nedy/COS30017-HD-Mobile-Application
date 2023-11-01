@@ -36,6 +36,27 @@ class AddTaskActivity : AppCompatActivity() {
 
         //add button
         val addButton = findViewById<Button>(R.id.add_task)
+        val addRandomTaskButton = findViewById<Button>(R.id.add_random_task)
+
+        addRandomTaskButton.setOnClickListener {
+            val task = Task (
+                    id = 0, // If you're auto-generating the ID in the database, you can set it to 0
+                    name = "a sample task",
+                    detail = "a sample detail",
+                    date = "2023-11-01",
+                    time = "12:00", // Set the time as needed
+                    duration = 45,
+                    frequency = "Once",
+                    isDone = false
+            )
+            for (i in 0..9) {
+                taskViewModel.addTask(task)
+            }
+            Toast.makeText(this, "Successfully added 10 tasks", Toast.LENGTH_LONG).show()
+            val replyIntent = Intent()
+            setResult(Activity.RESULT_OK, replyIntent)
+            finish()
+        }
 
         addButton.setOnClickListener {
 

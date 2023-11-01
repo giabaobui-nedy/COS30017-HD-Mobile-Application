@@ -1,6 +1,5 @@
 package com.example.benchmark
 
-import android.widget.Button
 import androidx.benchmark.macro.FrameTimingMetric
 import androidx.benchmark.macro.StartupMode
 import androidx.benchmark.macro.StartupTimingMetric
@@ -8,12 +7,10 @@ import androidx.benchmark.macro.junit4.MacrobenchmarkRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.uiautomator.By
 import androidx.test.uiautomator.Direction
-import androidx.test.uiautomator.UiSelector
 import androidx.test.uiautomator.Until
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-
 
 /**
  * This is an example startup benchmark.
@@ -27,54 +24,77 @@ import org.junit.runner.RunWith
  * Run this benchmark from Studio to see startup measurements, and captured system traces
  * for investigating your app's performance.
  */
-
 @RunWith(AndroidJUnit4::class)
-class ExampleStartupBenchmark {
+class Benchmarks {
     @get:Rule
     val benchmarkRule = MacrobenchmarkRule()
 
     @Test
     fun startup() = benchmarkRule.measureRepeated(
-        packageName = "com.example.android.roomwordssample",
-        metrics = listOf(StartupTimingMetric()),
-        iterations = 5,
-        startupMode = StartupMode.COLD
+            packageName = "com.example.android.roomwordssample",
+            metrics = listOf(StartupTimingMetric()),
+            iterations = 5,
+            startupMode = StartupMode.COLD
     ) {
         pressHome()
         startActivityAndWait()
     }
 
     @Test
+    fun add10Tasks() = benchmarkRule.measureRepeated (
+        packageName = "com.example.android.roomwordssample",
+        metrics = listOf(FrameTimingMetric()),
+        iterations = 10,
+        startupMode = StartupMode.COLD,
+        setupBlock = {
+            pressHome()
+        },
+        measureBlock = {
+            startActivityAndWait()
+            if (device.hasObject(By.res(packageName, "fab"))) {
+                val addButton = device.findObject(By.res(packageName, "fab"))
+                addButton.click()
+            }
+            if (device.hasObject(By.res(packageName, "add_random_task"))) {
+                val addRandomTaskButton = device.findObject(By.res(packageName, "add_random_task"))
+                addRandomTaskButton.click()
+            }
+        }
+    )
+
+    @Test
     fun scroll() {
         benchmarkRule.measureRepeated(
-            packageName = "com.example.android.roomwordssample",
-            iterations = 5,
-            metrics = listOf(FrameTimingMetric()),
-            startupMode = StartupMode.COLD,
-            setupBlock = {
-                pressHome()
-                startActivityAndWait()
-            }
+                packageName = "com.example.android.roomwordssample",
+                iterations = 5,
+                metrics = listOf(FrameTimingMetric()),
+                startupMode = StartupMode.COLD,
+                setupBlock = {
+                    pressHome()
+                }
         ) {
-            val recyclerView = device.findObject(By.res(packageName, "recycler_view"))
-            recyclerView.setGestureMargin(device.displayWidth / 10)
-            repeat(2) { recyclerView.fling(Direction.DOWN) }
-            repeat(2) { recyclerView.fling(Direction.UP) }
+            startActivityAndWait()
+            if (device.hasObject(By.res(packageName, "recycler_view"))) {
+                val recyclerView = device.findObject(By.res(packageName, "recycler_view"))
+                recyclerView.setGestureMargin(device.displayWidth / 10)
+                repeat(2) { recyclerView.fling(Direction.DOWN) }
+                repeat(2) { recyclerView.fling(Direction.UP) }
+            }
         }
     }
 
     @Test
     fun navigate() {
         benchmarkRule.measureRepeated(
-            packageName = "com.example.android.roomwordssample",
-            iterations = 5,
-            metrics = listOf(FrameTimingMetric()),
-            startupMode = StartupMode.COLD,
-            setupBlock = {
-                pressHome()
-                startActivityAndWait()
-            }
+                packageName = "com.example.android.roomwordssample",
+                iterations = 5,
+                metrics = listOf(FrameTimingMetric()),
+                startupMode = StartupMode.COLD,
+                setupBlock = {
+                    pressHome()
+                }
         ) {
+            startActivityAndWait()
             // Click the Add Task Button
             val addButton = device.findObject(By.res(packageName, "fab"))
             addButton?.let {
@@ -105,8 +125,6 @@ class ExampleStartupBenchmark {
                     device.pressBack()
                 }
             }
-
-            device.waitForIdle()
         }
     }
 }

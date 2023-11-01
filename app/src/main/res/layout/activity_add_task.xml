@@ -173,6 +173,16 @@
 
     <!-- Save Button -->
     <Button
+        android:id="@+id/add_random_task"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add random task"
+        app:layout_constraintTop_toBottomOf="@id/task_detail"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/add_task"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <Button
         android:id="@+id/add_task"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -180,5 +190,5 @@
         app:layout_constraintTop_toBottomOf="@+id/task_detail"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/add_random_task" />
 </androidx.constraintlayout.widget.ConstraintLayout>
