@@ -2,6 +2,14 @@
 
 
 buildscript {
+    ext {
+
+
+        agp_version3 = '8.2.0-rc02'
+        agp_version2 = '8.3.0-alpha11'
+        agp_version1 = '3.3.0-rc03'
+        agp_version = '8.2.0-rc01'
+    }
     ext.kotlin_version = '1.9.0'
 
     repositories {
@@ -10,7 +18,7 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.1.2'
+        classpath "com.android.tools.build:gradle:$agp_version3"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "androidx.benchmark:benchmark-baseline-profile-gradle-plugin:1.2.0"
     }

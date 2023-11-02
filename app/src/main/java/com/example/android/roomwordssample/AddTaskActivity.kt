@@ -43,7 +43,7 @@ class AddTaskActivity : AppCompatActivity() {
                     id = 0, // If you're auto-generating the ID in the database, you can set it to 0
                     name = "a sample task",
                     detail = "a sample detail",
-                    date = "2023-11-01",
+                    date = "2023-11-02",
                     time = "12:00", // Set the time as needed
                     duration = 45,
                     frequency = "Once",
