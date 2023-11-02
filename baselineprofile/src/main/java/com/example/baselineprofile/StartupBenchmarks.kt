@@ -80,7 +80,7 @@ class StartupBenchmarks {
     private fun navigate(compilationMode: CompilationMode) {
         rule.measureRepeated(
             packageName = "com.example.android.roomwordssample",
-            metrics = listOf(FrameTimingMetric()),
+            metrics = listOf(StartupTimingMetric(), FrameTimingMetric()),
             compilationMode = compilationMode,
             startupMode = StartupMode.COLD,
             iterations = 10,

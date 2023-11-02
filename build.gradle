@@ -3,12 +3,7 @@
 
 buildscript {
     ext {
-
-
         agp_version3 = '8.2.0-rc02'
-        agp_version2 = '8.3.0-alpha11'
-        agp_version1 = '3.3.0-rc03'
-        agp_version = '8.2.0-rc01'
     }
     ext.kotlin_version = '1.9.0'
 
