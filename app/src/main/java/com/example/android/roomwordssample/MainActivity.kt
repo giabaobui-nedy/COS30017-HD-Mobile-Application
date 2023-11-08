@@ -36,6 +36,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
+    override fun reportFullyDrawn() {
+        super.reportFullyDrawn()
+    }
     //some compliments
     private val compliments:List<String> = listOf (
         "Great job! You nailed it!",
@@ -106,6 +109,7 @@ class MainActivity : AppCompatActivity() {
 
             }
         }
+        reportFullyDrawn()
     }
 
     private fun adapterOnClickATask(task: Task?) {

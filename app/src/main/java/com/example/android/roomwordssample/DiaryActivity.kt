@@ -1,9 +1,11 @@
 package com.example.android.roomwordssample
 
 import android.icu.text.SimpleDateFormat
+import android.os.Build
 import android.os.Bundle
 import android.widget.TextView
 import androidx.activity.viewModels
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.android.roomwordssample.viewmodels.TaskViewModel
 import com.example.android.roomwordssample.viewmodels.TaskViewModelFactory
@@ -15,6 +17,7 @@ class DiaryActivity : AppCompatActivity() {
         TaskViewModelFactory((application as PlannerApplication).repository)
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_diary) // Assuming you have an XML layout file with a TextView with id 'diary'
